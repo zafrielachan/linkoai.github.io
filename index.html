@@ -14,29 +14,41 @@
             scroll-behavior: smooth;
         }
 
-        body {
-            background-color: #f4f7f6;
-            color: #333;
-            line-height: 1.6;
+        :root {
+            --bg-primary: #f4f7f6;
+            --bg-dark: #0f172a;
+            --bg-nav: #1e293b;
+            --text-main: #333;
+            --text-muted: #64748b;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --card-bg: #fff;
         }
 
-        /* --- NAVBAR (Flexbox) --- */
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden; /* Mencegah scroll horizontal yang merusak mobile view */
+        }
+
+        /* --- NAVBAR (Adaptif & Mobile Friendly) --- */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #1e293b;
-            padding: 1rem 2rem;
+            background-color: var(--bg-nav);
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         header .logo {
-            color: #38bdf8;
+            color: var(--accent);
             font-size: 1.4rem;
             font-weight: bold;
         }
@@ -44,22 +56,25 @@
         nav {
             display: flex;
             gap: 1.5rem;
+            flex-wrap: wrap; /* Supaya menu gak ketabrak pas layar tanggung */
         }
 
         nav a {
             color: #cbd5e1;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            font-weight: 500;
             transition: color 0.3s;
+            padding: 0.2rem 0.5rem;
         }
 
         nav a:hover, nav a.active {
-            color: #38bdf8;
+            color: var(--accent);
         }
 
-        /* --- SECTION LAYOUT --- */
+        /* --- SECTION LAYOUT (Fluid Padding) --- */
         section {
-            padding: 6rem 2rem 4rem 2rem;
+            padding: 6rem 5% 4rem 5%;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -67,13 +82,15 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #0f172a;
+            font-size: clamp(1.8rem, 4vw, 2.5rem); /* Fluid typography: mengecil di HP, membesar di desktop */
+            margin-bottom: 3rem;
+            color: var(--bg-dark);
             position: relative;
+            text-align: center;
         }
 
         section h2::after {
@@ -82,13 +99,13 @@
             bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
+            width: 50px;
             height: 4px;
-            background-color: #38bdf8;
+            background-color: var(--accent);
             border-radius: 2px;
         }
 
-        /* --- HOME SECTION --- */
+        /* --- HOME SECTION (Responsive Text) --- */
         #home {
             text-align: center;
             background: radial-gradient(circle at top, #1e293b, #0f172a);
@@ -97,49 +114,57 @@
         }
 
         #home h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            padding: 0 1rem;
         }
 
         #home h1 span {
-            color: #38bdf8;
+            color: var(--accent);
         }
 
         #home p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
             color: #94a3b8;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            padding: 0 1rem;
         }
 
         .btn {
             display: inline-block;
-            background-color: #38bdf8;
-            color: #0f172a;
+            background-color: var(--accent);
+            color: var(--bg-dark);
             padding: 0.8rem 2rem;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: transform 0.2s, background 0.3s;
         }
 
         .btn:hover {
-            background-color: #0ea5e9;
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
         }
 
         /* --- ABOUT SECTION --- */
-        #about .about-container {
-            display: flex;
-            gap: 3rem;
-            align-items: center;
+        .about-container {
             width: 100%;
+            max-width: 800px;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
         }
 
         .about-text {
-            flex: 1;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 1.8vw, 1.1rem);
+            color: #475569;
+            text-align: justify;
         }
 
-        /* --- TOOLS SECTION (Grid via Flexbox fallback) --- */
+        /* --- TOOLS SECTION (True Adaptive Flex Grid) --- */
         .tools-grid {
             display: flex;
             flex-wrap: wrap;
@@ -149,70 +174,87 @@
         }
 
         .tool-card {
-            background: #fff;
+            background: var(--card-bg);
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            width: calc(25% - 1.5rem);
-            min-width: 200px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            /* Menggunakan flex-grow & basis agar otomatis mengisi ruang kosong dan wrap otomatis */
+            flex: 1 1 calc(25% - 1.5rem); 
+            min-width: 240px; /* Batas minimum lebar card sebelum dia bungkus ke bawah */
             text-align: center;
-            border-top: 4px solid #38bdf8;
+            border-top: 4px solid var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
         }
 
         .tool-card h3 {
-            margin-bottom: 0.5rem;
-            color: #1e293b;
+            margin-bottom: 0.8rem;
+            color: var(--bg-nav);
+            font-size: 1.2rem;
         }
 
         /* --- PROJECTS & CERTIFICATION SECTION --- */
         .card-container {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
             width: 100%;
+            max-width: 900px;
         }
 
         .card {
-            background: #fff;
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.6rem;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateX(4px);
         }
 
         .card h3 {
-            color: #0f172a;
+            color: var(--bg-dark);
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
         }
 
         .card .meta {
             font-size: 0.9rem;
-            color: #64748b;
+            color: var(--text-muted);
             font-weight: bold;
         }
 
         .tags {
             display: flex;
             gap: 0.5rem;
+            flex-wrap: wrap;
             margin-top: 0.5rem;
         }
 
         .tag {
             background-color: #e2e8f0;
             color: #475569;
-            padding: 0.2rem 0.6rem;
+            padding: 0.25rem 0.75rem;
             font-size: 0.8rem;
             border-radius: 4px;
+            font-weight: 500;
         }
 
-        /* --- EXPERIENCE SECTION (Timeline style with Flex) --- */
+        /* --- EXPERIENCE SECTION --- */
         .timeline {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 2.5rem;
             width: 100%;
-            border-left: 4px solid #38bdf8;
+            max-width: 900px;
+            border-left: 4px solid var(--accent);
             padding-left: 1.5rem;
         }
 
@@ -223,38 +265,87 @@
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -1.95rem;
-            top: 0.2rem;
+            left: -1.98rem;
+            top: 0.25rem;
             width: 12px;
             height: 12px;
-            background-color: #38bdf8;
+            background-color: var(--accent);
             border-radius: 50%;
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-item h3 {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
         }
 
         /* --- CONTACT SECTION --- */
         #contact p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             margin-bottom: 2rem;
             text-align: center;
+            max-width: 600px;
         }
 
         .contact-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        /* --- RESPONSIVE --- */
+        /* --- RESPONSIVE BREAKPOINTS (MEDIA QUERIES) --- */
+        
+        /* Layar Tablet & HP (Lebar di bawah 768px) */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.8rem;
+                padding: 1rem;
+                position: static; /* Biar gak makan tempat di layar HP yang pendek */
             }
-            #about .about-container {
+
+            section {
+                padding: 3rem 1rem 3rem 1rem;
+                min-height: auto; /* Agar tidak terlalu renggang di mobile */
+            }
+
+            nav {
+                justify-content: center;
+                gap: 0.8rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .about-container {
+                padding: 1.5rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .timeline {
+                margin-left: 0.5rem;
+            }
+        }
+
+        /* Optimasi khusus untuk HP Sangat Kecil (Lebar di bawah 400px) */
+        @media (max-width: 400px) {
+            nav {
+                gap: 0.5rem;
+            }
+            nav a {
+                font-size: 0.75rem;
+            }
+            .contact-links {
                 flex-direction: column;
-                text-align: center;
+                width: 100%;
             }
-            .tool-card {
-                width: calc(50% - 1.5rem);
+            .contact-links .btn {
+                text-align: center;
+                width: 100%;
             }
         }
     </style>
