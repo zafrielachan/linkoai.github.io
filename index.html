@@ -14,6 +14,7 @@
             scroll-behavior: smooth;
         }
 
+        /* --- CSS VARIABLES (Tema Terang / Default) --- */
         :root {
             --bg-primary: #f4f7f6;
             --bg-dark: #0f172a;
@@ -23,16 +24,33 @@
             --accent: #38bdf8;
             --accent-hover: #0ea5e9;
             --card-bg: #fff;
+            --card-text: #475569;
+            --tag-bg: #e2e8f0;
+            --tag-text: #475569;
+        }
+
+        /* --- VARIABEL UNTUK MODE GELAP --- */
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-dark: #f8fafc;
+            --bg-nav: #0b0f19;
+            --text-main: #cbd5e1;
+            --text-muted: #94a3b8;
+            --card-bg: #1e293b;
+            --card-text: #cbd5e1;
+            --tag-bg: #334155;
+            --tag-text: #38bdf8;
         }
 
         body {
             background-color: var(--bg-primary);
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden; /* Mencegah scroll horizontal yang merusak mobile view */
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s; /* Animasi smooth pas ganti tema */
         }
 
-        /* --- NAVBAR (Adaptif & Mobile Friendly) --- */
+        /* --- NAVBAR --- */
         header {
             position: fixed;
             top: 0;
@@ -45,6 +63,7 @@
             align-items: center;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
         }
 
         header .logo {
@@ -53,10 +72,16 @@
             font-weight: bold;
         }
 
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
         nav {
             display: flex;
             gap: 1.5rem;
-            flex-wrap: wrap; /* Supaya menu gak ketabrak pas layar tanggung */
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -72,7 +97,33 @@
             color: var(--accent);
         }
 
-        /* --- SECTION LAYOUT (Fluid Padding) --- */
+        /* --- BUTTON TOGGLE DARK MODE --- */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: var(--accent);
+            color: #0f172a;
+        }
+
+        /* --- SECTION LAYOUT --- */
         section {
             padding: 6rem 5% 4rem 5%;
             min-height: 100vh;
@@ -86,7 +137,7 @@
         }
 
         section h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem); /* Fluid typography: mengecil di HP, membesar di desktop */
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin-bottom: 3rem;
             color: var(--bg-dark);
             position: relative;
@@ -105,7 +156,7 @@
             border-radius: 2px;
         }
 
-        /* --- HOME SECTION (Responsive Text) --- */
+        /* --- HOME SECTION --- */
         #home {
             text-align: center;
             background: radial-gradient(circle at top, #1e293b, #0f172a);
@@ -117,7 +168,6 @@
             font-size: clamp(2.2rem, 6vw, 3.8rem);
             margin-bottom: 1rem;
             line-height: 1.2;
-            padding: 0 1rem;
         }
 
         #home h1 span {
@@ -129,13 +179,12 @@
             color: #94a3b8;
             margin-bottom: 2.5rem;
             max-width: 700px;
-            padding: 0 1rem;
         }
 
         .btn {
             display: inline-block;
             background-color: var(--accent);
-            color: var(--bg-dark);
+            color: #0f172a;
             padding: 0.8rem 2rem;
             border-radius: 5px;
             text-decoration: none;
@@ -156,15 +205,16 @@
             padding: 2.5rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
         }
 
         .about-text {
             font-size: clamp(1rem, 1.8vw, 1.1rem);
-            color: #475569;
+            color: var(--card-text);
             text-align: justify;
         }
 
-        /* --- TOOLS SECTION (True Adaptive Flex Grid) --- */
+        /* --- TOOLS SECTION --- */
         .tools-grid {
             display: flex;
             flex-wrap: wrap;
@@ -178,12 +228,11 @@
             padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            /* Menggunakan flex-grow & basis agar otomatis mengisi ruang kosong dan wrap otomatis */
             flex: 1 1 calc(25% - 1.5rem); 
-            min-width: 240px; /* Batas minimum lebar card sebelum dia bungkus ke bawah */
+            min-width: 240px;
             text-align: center;
             border-top: 4px solid var(--accent);
-            transition: transform 0.3s;
+            transition: transform 0.3s, background-color 0.3s;
         }
 
         .tool-card:hover {
@@ -192,8 +241,12 @@
 
         .tool-card h3 {
             margin-bottom: 0.8rem;
-            color: var(--bg-nav);
+            color: var(--bg-dark);
             font-size: 1.2rem;
+        }
+
+        .tool-card p {
+            color: var(--card-text);
         }
 
         /* --- PROJECTS & CERTIFICATION SECTION --- */
@@ -213,7 +266,7 @@
             display: flex;
             flex-direction: column;
             gap: 0.6rem;
-            transition: transform 0.3s;
+            transition: transform 0.3s, background-color 0.3s;
         }
 
         .card:hover {
@@ -223,6 +276,10 @@
         .card h3 {
             color: var(--bg-dark);
             font-size: clamp(1.1rem, 3vw, 1.4rem);
+        }
+
+        .card p {
+            color: var(--card-text);
         }
 
         .card .meta {
@@ -239,12 +296,13 @@
         }
 
         .tag {
-            background-color: #e2e8f0;
-            color: #475569;
+            background-color: var(--tag-bg);
+            color: var(--tag-text);
             padding: 0.25rem 0.75rem;
             font-size: 0.8rem;
             border-radius: 4px;
             font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         /* --- EXPERIENCE SECTION --- */
@@ -272,10 +330,20 @@
             background-color: var(--accent);
             border-radius: 50%;
             border: 2px solid var(--bg-primary);
+            transition: border-color 0.3s;
         }
 
         .timeline-item h3 {
+            color: var(--bg-dark);
             font-size: clamp(1.1rem, 3vw, 1.4rem);
+        }
+
+        .timeline-item p {
+            color: var(--card-text);
+        }
+
+        .timeline-item .meta {
+            color: var(--text-muted);
         }
 
         /* --- CONTACT SECTION --- */
@@ -284,6 +352,7 @@
             margin-bottom: 2rem;
             text-align: center;
             max-width: 600px;
+            color: var(--text-main);
         }
 
         .contact-links {
@@ -293,20 +362,24 @@
             justify-content: center;
         }
 
-        /* --- RESPONSIVE BREAKPOINTS (MEDIA QUERIES) --- */
-        
-        /* Layar Tablet & HP (Lebar di bawah 768px) */
+        /* --- RESPONSIVE BREAKPOINTS --- */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
                 gap: 0.8rem;
                 padding: 1rem;
-                position: static; /* Biar gak makan tempat di layar HP yang pendek */
+                position: static;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 0.8rem;
+                width: 100%;
             }
 
             section {
-                padding: 3rem 1rem 3rem 1rem;
-                min-height: auto; /* Agar tidak terlalu renggang di mobile */
+                padding: 3rem 1rem;
+                min-height: auto;
             }
 
             nav {
@@ -317,36 +390,6 @@
             nav a {
                 font-size: 0.85rem;
             }
-
-            .about-container {
-                padding: 1.5rem;
-            }
-
-            .card {
-                padding: 1.5rem;
-            }
-            
-            .timeline {
-                margin-left: 0.5rem;
-            }
-        }
-
-        /* Optimasi khusus untuk HP Sangat Kecil (Lebar di bawah 400px) */
-        @media (max-width: 400px) {
-            nav {
-                gap: 0.5rem;
-            }
-            nav a {
-                font-size: 0.75rem;
-            }
-            .contact-links {
-                flex-direction: column;
-                width: 100%;
-            }
-            .contact-links .btn {
-                text-align: center;
-                width: 100%;
-            }
         }
     </style>
 </head>
@@ -354,15 +397,22 @@
 
     <header>
         <div class="logo">ZAC.</div>
-        <nav>
-            <a href="#home" class="nav-link active">Home</a>
-            <a href="#about" class="nav-link">About</a>
-            <a href="#tools" class="nav-link">Tools</a>
-            <a href="#project" class="nav-link">Project</a>
-            <a href="#experience" class="nav-link">Experience</a>
-            <a href="#certification" class="nav-link">Certification</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </nav>
+        <div class="nav-container">
+            <nav>
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#tools" class="nav-link">Tools</a>
+                <a href="#project" class="nav-link">Project</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#certification" class="nav-link">Certification</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="theme-switch-wrapper">
+                <button class="theme-toggle-btn" id="themeToggle">
+                    🌙 <span id="themeText">Dark Mode</span>
+                </button>
+            </div>
+        </div>
     </header>
 
     <section id="home">
@@ -467,16 +517,15 @@
     </section>
 
     <script>
+        // 1. LOGIKA ACTIVE LINK ON SCROLL
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
 
         window.addEventListener('scroll', () => {
             let current = '';
-            
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                // Ditambah toleransi offset agar navigasi berubah tepat waktu
                 if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
                     current = section.getAttribute('id');
                 }
@@ -488,6 +537,37 @@
                     link.classList.add('active');
                 }
             });
+        });
+
+        // 2. LOGIKA DARK / LIGHT MODE (MENGGUNAKAN LOCAL STORAGE)
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeText = document.getElementById('themeText');
+        
+        // Cek apakah user sebelumnya sudah punya preferensi tema tersimpan
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                themeToggleBtn.innerHTML = '☀️ <span id="themeText">Light Mode</span>';
+            }
+        }
+
+        // Jalankan fungsi ketika tombol di-klik
+        themeToggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            
+            if (theme === 'dark') {
+                // Switch ke Light Mode
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeToggleBtn.innerHTML = '🌙 <span id="themeText">Dark Mode</span>';
+            } else {
+                // Switch ke Dark Mode
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggleBtn.innerHTML = '☀️ <span id="themeText">Light Mode</span>';
+            }
         });
     </script>
 </body>
