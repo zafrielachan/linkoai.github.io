@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,21 +49,19 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* --- 🌟 CSS UNTUK EFEK MUNCUL (FADE-IN & SLIDE-UP) --- */
+        /* --- SMOOTH REVEAL ANIMATION EFFECT --- */
         .reveal {
             opacity: 0;
-            transform: translateY(40px); /* Mulai dari posisi agak ke bawah */
+            transform: translateY(40px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            will-change: opacity, transform; /* Optimasi performa render browser */
+            will-change: opacity, transform;
         }
 
-        /* Kelas aktif yang akan ditempelkan oleh JavaScript pas di-scroll */
         .reveal.active {
             opacity: 1;
-            transform: translateY(0); /* Kembali ke posisi semula */
+            transform: translateY(0);
         }
 
-        /* Efek stagger (bergantian) khusus untuk grid Tools agar muncul satu-satu */
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
@@ -442,14 +440,14 @@
     </header>
 
     <!-- BUTTON SCROLL TO TOP -->
-    <button id="scrollTopBtn" title="Kembali ke atas">↑</button>
+    <button id="scrollTopBtn" title="Back to top">↑</button>
 
-    <!-- 1. HOME SECTION (Efek Reveal Langsung Jalan) -->
+    <!-- 1. HOME SECTION -->
     <section id="home">
         <div class="reveal active">
             <h1>Hi, I'm <span>Zafriel Agiraldi C.</span></h1>
             <p>IT Infrastructure & Field Specialist | Web Developer Enthusiast</p>
-            <a href="#project" class="btn">Lihat Proyek Saya</a>
+            <a href="#project" class="btn">View My Work</a>
         </div>
     </section>
 
@@ -458,20 +456,20 @@
         <h2 class="reveal">About Me</h2>
         <div class="about-container reveal">
             <div class="about-text">
-                <p>Saya adalah seorang profesional IT yang berfokus pada <strong>Field Technical Support dan IT Infrastructure</strong> dengan pengalaman nyata di lapangan selama lebih dari 7 tahun. Spesialisasi saya ada di bagian <em>Physical Deployment</em>—mulai dari instalasi hardware, penataan rak server, hingga implementasi jaringan fisik.</p>
+                <p>I am an IT professional specializing in <strong>Field Technical Support and IT Infrastructure</strong> with over 7 years of hands-on field experience. My primary focus revolves around <em>Physical Deployment</em>—ranging from hardware staging, server rack organization, to physical network engineering implementations.</p>
                 <br>
-                <p>Di samping itu, saya juga aktif mengeksplorasi dunia software development, khususnya modern web development dan machine learning, untuk melengkapi kapabilitas teknis saya.</p>
+                <p>Alongside my core infrastructure background, I am deeply passionate about modern software engineering ecosystems, specifically expanding my technical capabilities within web development and machine learning fields.</p>
             </div>
         </div>
     </section>
 
-    <!-- 3. TOOLS SECTION (Dengan Efek Delay Muncul Bergantian) -->
+    <!-- 3. TOOLS SECTION -->
     <section id="tools">
         <h2 class="reveal">Tools & Tech Stack</h2>
         <div class="tools-grid">
             <div class="tool-card reveal">
                 <h3>Hardware & Infra</h3>
-                <p>Server Racks, Network Switch, Mikrotik, CCTV & Access Control</p>
+                <p>Server Racks, Network Switches, MikroTik, CCTV & Physical Access Control Systems</p>
             </div>
             <div class="tool-card reveal reveal-delay-1">
                 <h3>Front-End</h3>
@@ -479,7 +477,7 @@
             </div>
             <div class="tool-card reveal reveal-delay-2">
                 <h3>Back-End</h3>
-                <p>Laravel, PHP, Payment Gateway Integration</p>
+                <p>Laravel, PHP, Payment Gateway Integrations</p>
             </div>
             <div class="tool-card reveal reveal-delay-3">
                 <h3>Machine Learning</h3>
@@ -495,7 +493,7 @@
             <div class="card reveal">
                 <h3>Image Classification Model (Fashion MNIST)</h3>
                 <p class="meta">Machine Learning Project</p>
-                <p>Membangun dan melatih model klasifikasi gambar berbasis TensorFlow/Keras serta melakukan export deployment ke berbagai ekosistem modern.</p>
+                <p>Built and trained deep learning models utilizing TensorFlow/Keras, supporting deployment exports across various modern multi-platform runtimes.</p>
                 <div class="tags">
                     <span class="tag">SavedModel</span>
                     <span class="tag">TFJS</span>
@@ -503,9 +501,9 @@
                 </div>
             </div>
             <div class="card reveal">
-                <h3>Web Profile Wilayah Ciputat</h3>
+                <h3>Regional Web Profile (Ciputat Area)</h3>
                 <p class="meta">Web Development</p>
-                <p>Membuat halaman profil daerah berbasis web dengan struktur HTML semantik yang rapih serta layouting responsif memanfaatkan Flexbox murni.</p>
+                <p>Developed a semantic, lightweight regional profile web page featuring fully responsive, clean layouts built strictly with modern Flexbox standards.</p>
                 <div class="tags">
                     <span class="tag">HTML5</span>
                     <span class="tag">CSS3</span>
@@ -521,25 +519,25 @@
         <div class="timeline">
             <div class="timeline-item reveal">
                 <h3>Technical Operation</h3>
-                <p class="meta">PT. Mitra Services Infotama | Februari 2025 – Saat Ini</p>
-                <p>Bertanggung jawab penuh dalam penanganan teknis operasional infrastruktur IT dan penataan deployment perangkat di lapangan.</p>
+                <p class="meta">PT. Mitra Services Infotama | February 2025 – Present</p>
+                <p>Directly responsible for continuous technical infrastructure operations, hardware deployments, and coordinating critical on-site equipment provisioning.</p>
             </div>
             <div class="timeline-item reveal">
                 <h3>IT System Implementer</h3>
-                <p class="meta">Dinas Perhubungan Kota Tasikmalaya | Juni 2024 – Desember 2024</p>
-                <p>Melakukan implementasi taktis sistem IT dan koordinasi fisik perangkat penunjang transportasi di area operasional kerja.</p>
+                <p class="meta">Dinas Perhubungan Kota Tasikmalaya | June 2024 – December 2024</p>
+                <p>Executed structured on-site IT deployments, field tech alignment, and infrastructure component integrations across regional traffic system locations.</p>
             </div>
         </div>
     </section>
 
     <!-- 6. CERTIFICATION SECTION -->
     <section id="certification">
-        <h2 class="reveal">Certifications</h2>
+        <h2 class="reveal">Education & Certifications</h2>
         <div class="card-container">
             <div class="card reveal">
-                <h3>S1 Teknik Informatika</h3>
-                <p class="meta">Universitas Perjuangan Tasikmalaya | Lulus 2024</p>
-                <p>Pendidikan formal sarjana yang memperkuat fondasi logika pemrograman, manajemen infrastruktur, dan rekayasa perangkat lunak.</p>
+                <h3>Bachelor of Computer Science (S1 Teknik Informatika)</h3>
+                <p class="meta">Universitas Perjuangan Tasikmalaya | Graduated 2024</p>
+                <p>Formal academic degree program prioritizing structured software logic design, foundational network management, and computer engineering methodologies.</p>
             </div>
         </div>
     </section>
@@ -547,9 +545,9 @@
     <!-- 7. CONTACT SECTION -->
     <section id="contact">
         <h2 class="reveal">Contact Me</h2>
-        <p class="reveal">Tertarik berkolaborasi untuk physical deployment infrastruktur jaringan atau pembuatan aplikasi web?</p>
+        <p class="reveal">Looking for a technical field specialist to manage robust physical hardware operations, or interested in collaborating on React/Laravel projects? Let's connect!</p>
         <div class="contact-links reveal">
-            <a href="mailto:zafrielakn4@gmail.com" class="btn">Kirim Email</a>
+            <a href="mailto:zafrielakn4@gmail.com" class="btn">Send Email</a>
             <a href="https://www.linkedin.com/in/zafrielac18/" class="btn" style="background-color: #475569; color: #fff;">LinkedIn</a>
         </div>
     </section>
@@ -633,24 +631,21 @@
             }
         });
 
-        // --- 🌟 5. INTERSECTION OBSERVER LOGIC (EFEK SMOOTH REVEAL) ---
+        // --- 5. INTERSECTION OBSERVER FOR REVEAL ANIMATIONS ---
         const revealElements = document.querySelectorAll('.reveal');
 
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                // Jika elemen masuk ke area pandang layar (view-port)
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    // Setelah muncul, hentikan pengawasan agar performa web tetap enteng
                     observer.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.15, // Elemen bakal muncul kalau minimal 15% bagiannya sudah kelihatan
-            rootMargin: "0px 0px -50px 0px" // Trigger aktif sedikit sebelum menyentuh batas bawah layar
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
         });
 
-        // Daftarkan semua elemen berkelas .reveal ke dalam sistem pengawasan observer
         revealElements.forEach(element => {
             revealObserver.observe(element);
         });
