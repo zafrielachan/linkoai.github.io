@@ -294,7 +294,7 @@
             <div id="active-profile-avatar" class="w-8 h-8 sm:w-9 sm:h-9 rounded-md bg-gradient-to-br from-zetflix-red to-red-900 flex items-center justify-center font-bold text-sm shadow-md border border-white/20">
               R
             </div>
-            <span id="active-profile-name" class="hidden xl:inline-block text-xs font-medium text-zetflix-muted">Raka</span>
+            <span id="active-profile-name" class="hidden xl:inline-block text-xs font-medium text-zetflix-muted">Zafriel</span>
             <i class="fa-solid fa-caret-down text-xs text-zetflix-muted hidden sm:inline-block"></i>
           </button>
 
@@ -314,19 +314,19 @@
             <!-- Daftar Ganti Profil Cepat -->
             <div class="p-2 border-b border-white/10">
               <p class="px-2 py-1 text-[11px] text-zetflix-subtle font-medium">Ganti Profil Tontonan</p>
-              <button onclick="switchProfile('Raka', 'R', 'from-zetflix-red to-red-900')" class="w-full px-2.5 py-2 rounded-lg hover:bg-white/10 flex items-center justify-between text-left text-xs transition">
+              <button onclick="switchProfile('Zafriel', 'R', 'from-zetflix-red to-red-900')" class="w-full px-2.5 py-2 rounded-lg hover:bg-white/10 flex items-center justify-between text-left text-xs transition">
                 <span class="flex items-center gap-2.5">
                   <span class="w-6 h-6 rounded bg-gradient-to-br from-zetflix-red to-red-900 flex items-center justify-center font-bold text-white">R</span>
-                  <span>Raka (Utama)</span>
+                  <span>Zafriel (Utama)</span>
                 </span>
-                <i id="check-profile-Raka" class="fa-solid fa-check text-zetflix-red"></i>
+                <i id="check-profile-Zafriel" class="fa-solid fa-check text-zetflix-red"></i>
               </button>
-              <button onclick="switchProfile('Nadia', 'N', 'from-indigo-600 to-purple-900')" class="w-full px-2.5 py-2 rounded-lg hover:bg-white/10 flex items-center justify-between text-left text-xs transition">
+              <button onclick="switchProfile('Fitri', 'N', 'from-indigo-600 to-purple-900')" class="w-full px-2.5 py-2 rounded-lg hover:bg-white/10 flex items-center justify-between text-left text-xs transition">
                 <span class="flex items-center gap-2.5">
                   <span class="w-6 h-6 rounded bg-gradient-to-br from-indigo-600 to-purple-900 flex items-center justify-center font-bold text-white">N</span>
-                  <span>Nadia</span>
+                  <span>Fitri</span>
                 </span>
-                <i id="check-profile-Nadia" class="fa-solid fa-check text-zetflix-red hidden"></i>
+                <i id="check-profile-Fitri" class="fa-solid fa-check text-zetflix-red hidden"></i>
               </button>
               <button onclick="switchProfile('Kids', 'K', 'from-emerald-500 to-teal-800')" class="w-full px-2.5 py-2 rounded-lg hover:bg-white/10 flex items-center justify-between text-left text-xs transition">
                 <span class="flex items-center gap-2.5">
@@ -431,7 +431,7 @@
 
             <!-- Judul Film Hero -->
             <h1 id="hero-title" class="font-display text-5xl sm:text-6xl lg:text-7xl tracking-wide leading-[0.94] text-white drop-shadow-2xl">
-              NEON JAKARTA 2088
+              NEON TASIKMALAYA 2088
             </h1>
 
             <!-- Baris Metadata Hero -->
@@ -498,7 +498,7 @@
           <div class="flex items-center justify-between">
             <h2 class="text-lg sm:text-xl font-bold tracking-tight flex items-center gap-2">
               <i class="fa-solid fa-clock-rotate-left text-zetflix-red text-sm"></i>
-              <span>Continue Watching for <span id="cw-profile-name">Raka</span></span>
+              <span>Continue Watching for <span id="cw-profile-name">Zafriel</span></span>
             </h2>
             <button onclick="clearContinueWatching()" class="text-xs text-zetflix-subtle hover:text-zetflix-red transition">
               Bersihkan Riwayat
@@ -1062,7 +1062,7 @@
     const CATALOG = [
       {
         id: 'neon-jakarta-2088',
-        title: 'Neon Jakarta 2088',
+        title: 'Neon Tasikmalaya 2088',
         type: 'movie',
         year: 2026,
         maturity: '18+',
@@ -1359,7 +1359,7 @@
       {
         id: 'notif-1',
         movieId: 'neon-jakarta-2088',
-        title: 'Rilis Baru: Neon Jakarta 2088',
+        title: 'Rilis Baru: Neon Tasikmalaya 2088',
         desc: 'Kini tersedia dalam kualitas 4K HDR & Dolby Atmos. Tonton sekarang!',
         time: 'Baru saja',
         unread: true,
@@ -1425,7 +1425,7 @@
       likedItems: ['neon-jakarta-2088'],
       reminders: [],
       notifications: [],
-      profile: { name: 'Raka', initial: 'R', gradient: 'from-zetflix-red to-red-900' }
+      profile: { name: 'Zafriel', initial: 'R', gradient: 'from-zetflix-red to-red-900' }
     };
 
     function loadStateFromStorage() {
@@ -2361,7 +2361,7 @@
       }
       if (nameEl) nameEl.textContent = appState.profile.name;
 
-      ['Raka', 'Nadia', 'Kids'].forEach(p => {
+      ['Zafriel', 'Fitri', 'Kids'].forEach(p => {
         const check = document.getElementById(`check-profile-${p}`);
         if (check) {
           if (p === appState.profile.name) check.classList.remove('hidden');
@@ -2379,7 +2379,7 @@
       appState.likedItems = ['neon-jakarta-2088'];
       appState.reminders = [];
       appState.notifications = JSON.parse(JSON.stringify(INITIAL_NOTIFICATIONS));
-      appState.profile = { name: 'Raka', initial: 'R', gradient: 'from-zetflix-red to-red-900' };
+      appState.profile = { name: 'Zafriel', initial: 'R', gradient: 'from-zetflix-red to-red-900' };
       saveStateToStorage();
       applyProfileUI();
       renderAllViews();
